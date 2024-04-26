@@ -1,17 +1,11 @@
-from dataclasses import dataclass
 
-
-@dataclass
-class Player:
-    name: str
-    DEFAULT_PLAYER_NAME = "Flip"
-
-
-def player_factory() -> Player:
-    name = input("What's your name? ")
-    return Player(name=Player.DEFAULT_PLAYER_NAME)
+from database.database import Database
+from database.models.character import Character
 
 
 if __name__ == "__main__":
-    player = player_factory()
-
+    db = Database()
+    name = input("What's your name? ")
+    player = Character()
+    db.add_character(player)
+    print(f"Hello {player.name}")
